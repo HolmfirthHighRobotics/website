@@ -3,14 +3,18 @@
     <title>Holmfirth High Robotics</title>
 
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="script.js"></script>
   </head>
   <body>
     <header>
       Holmfirth High Robotics
       <a href="https://youtube.com/HolmfirthHighRobotics" target="_blank">Channel</a>
       <a href="https://github.com/HolmfirthHighRobotics" target="_blank">Github</a>
-      <br>
+       <div class="marquee" aria-label="Announcement">
+         <div class="marquee__inner">Waiting for the new season!</div>
+       </div>
       <a href="#aboutUs">About Us</a>
+      <a href="#contactUs">Contact Us</a>
     </header>
     <div class="content" id="content">
       <h1>Welcome to Holmfirth High Robotics!</h1>
@@ -34,7 +38,6 @@
         <h2>Contact Us</h2>
         <p>We are always open to answering your questions if you have any, so drop us an email down below!</p>
         <div class="contactForm" id="contactForm">
-          <!-- Replace FORM_ID with your Formspree form ID (get one at https://formspree.io/) -->
           <form id="contact" action="https://formspree.io/f/xykalpel" method="POST">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required>
@@ -55,14 +58,14 @@
             <textarea id="notes" name="notes" rows="5"></textarea>
 
             <!-- Optional: include a subject field for Formspree or configure via their dashboard -->
-            <input type="hidden" name="_subject" value="New contact form submission">
+            <input type="hidden" name="_subject" value="Form Submissions">
 
             <button type="submit">Send</button>
             <h6>Powered by <a href="https://formspree.io">Formspree</a></h6>
           </form>
-          <!-- After creating a form in Formspree, replace FORM_ID above with your actual form id. -->
         </div>
       </div>
     </div>
+    <footer>&copy; 2026 Holmfirth High Robotics (An Achoo! Site)</footer>
   </body>
 </html>

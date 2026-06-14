@@ -4,10 +4,17 @@ body {
 }
 
 header {
-    border: 2px solid cadetblue;
-    background-color: cadetblue;
+    border: 2px solid rgb(81, 134, 136);
+    background-color: rgb(82, 135, 137);
     padding: 15px;
+    box-shadow: 20px 10px 5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+    overflow-x: auto;
 }
+
 
 .content {
     width: 60%;
@@ -16,6 +23,7 @@ header {
     background-color: cadetblue;
     border: 3px solid cadetblue;
     text-align: center;
+    box-shadow: 20px 10px 5px;
 }
 
 .aboutUs{
@@ -24,7 +32,7 @@ header {
 
     background: linear-gradient(
         45deg,
-        rgba(255, 0, 0, 1) 0%,
+        rgb(113, 46, 46) 0%,
         rgba(199, 87, 87, 1) 5%,
         rgba(255, 255, 255, 1) 10%,
         rgba(255, 255, 255, 1) 15%,
@@ -90,4 +98,88 @@ header {
 
 .contactForm button[type="submit"]:hover {
     opacity: 0.9;
+}
+
+
+footer {
+    border: 2px solid rgb(81, 134, 136);
+    background-color: rgb(82, 135, 137);
+    padding: 15px;
+    box-shadow: 20px 10px;
+    text-align: center;
+}
+
+/* Animation utilities */
+:root{
+    --easing: cubic-bezier(.22,.9,.18,1);
+}
+
+/* Page entrance */
+.content{
+    transform: translateY(8px);
+    opacity: 0;
+    transition: transform 600ms var(--easing), opacity 600ms var(--easing);
+}
+body.loaded .content{
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Reveal on scroll */
+.reveal{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 600ms var(--easing), transform 600ms var(--easing);
+}
+.reveal.visible{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Header subtle float */
+header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+header.header-animate{
+    animation: headerFloat 4s ease-in-out infinite;
+}
+@keyframes headerFloat{
+    0%{transform: translateY(0)}
+    50%{transform: translateY(-4px)}
+    100%{transform: translateY(0)}
+}
+
+header a{
+    transition: transform 180ms ease, color 180ms ease;
+}
+header a:hover{transform: translateY(-3px); color: #eef;}
+
+/* Replacement for deprecated <marquee> */
+.marquee{
+    display: inline-block;
+    max-width: 30%;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.marquee__inner{
+    display: inline-block;
+    white-space: nowrap;
+    transform: translateX(100%);
+    animation: marquee 10s linear infinite;
+}
+@keyframes marquee{
+    0%{transform: translateX(100%);}    
+    100%{transform: translateX(-100%);}    
+}
+
+/* Form submission states */
+.contactForm form.submitting{opacity:0.7; transform: scale(0.997);}
+.contactForm form.submitted{border-color: #6ee56e; box-shadow: 0 6px 18px rgba(30,180,60,0.12);}
+
+/* Small responsive tweak */
+@media (max-width: 800px){
+    .content{width: 90%; margin: 20px auto;}
+    .contactForm form{padding:10px}
 }
