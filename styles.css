@@ -1,11 +1,51 @@
-* {
+body {
     background-color: bisque;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+header {
+    border: 2px solid cadetblue;
+    background-color: cadetblue;
+    padding: 15px;
+}
+
 .content {
+    width: 60%;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: cadetblue;
+    border: 3px solid cadetblue;
     text-align: center;
-    /* Put a box around the element */
-    
-    color: cadetblue;
+}
+
+.aboutUs{
+    padding: 20px;
+    text-align: left;
+
+    background: linear-gradient(
+        45deg,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(199, 87, 87, 1) 5%,
+        rgba(255, 255, 255, 1) 10%,
+        rgba(255, 255, 255, 1) 15%,
+        rgba(255, 0, 0, 1) 20%,
+        rgba(255, 0, 0, 1) 25%,
+        rgba(255, 255, 255, 1) 30%,
+        rgba(255, 255, 255, 1) 35%,
+        rgba(255, 0, 0, 1) 40%,
+        rgb(255, 0, 0, 1) 45%
+        rgba(255, 255, 255, 1) 50%,
+        rgba(255, 255, 255, 1) 55%,
+        rgba(255, 0, 0, 1) 60%,
+        rgb(255, 0, 0, 1) 65%
+        rgba(255, 255, 255, 1) 70%,
+        rgba(255, 255, 255, 1) 75%,
+        rgba(255, 0, 0, 1) 80%,
+        rgb(255, 0, 0, 1) 85%
+        rgba(255, 255, 255, 1) 90%,
+        rgba(255, 255, 255, 1) 95%
+    );
+
+    -webkit-background-clip: text;
+    color: transparent;    
 }
