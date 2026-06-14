@@ -4,6 +4,18 @@
 
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="script.js"></script>
+    <style>
+      .show-btn{cursor:pointer;color:#0066cc;font-weight:bold;display:inline-block;margin:10px 0}
+      .game-area{border:1px solid #ccc;padding:8px;border-radius:6px;background:#f8f8f8}
+      #clickHere{min-height:220px}
+      .game-ui{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+      .score{font-weight:bold}
+      .small-btn{background:#0066cc;color:#fff;border:none;padding:6px 10px;border-radius:4px;cursor:pointer}
+      .textarea-wrap{position:relative}
+      .textarea-wrap textarea{padding-bottom:28px;box-sizing:border-box;width:100%}
+      .note-counter{position:absolute;left:8px;bottom:6px;font-size:0.85em;color:#666;pointer-events:none}
+      .note-hint{position:absolute;right:8px;bottom:6px;font-size:0.85em;color:#b03030;display:none}
+    </style>
   </head>
   <body>
     <header>
@@ -55,7 +67,11 @@
             </select>
 
             <label for="notes">Additional notes</label>
-            <textarea id="notes" name="notes" rows="5"></textarea>
+            <div class="textarea-wrap">
+              <textarea id="notes" name="notes" rows="5" maxlength="300"></textarea>
+              <div id="notesCounter" class="note-counter">0/300</div>
+              <div id="notesHint" class="note-hint">Email <a href="mailto:holmfirthhighrobotics@gmail.com">holmfirthhighrobotics@gmail.com</a> for longer messages. </div>
+            </div>
 
             <!-- Optional: include a subject field for Formspree or configure via their dashboard -->
             <input type="hidden" name="_subject" value="Form Submissions">
@@ -63,8 +79,67 @@
             <button type="submit">Send</button>
             <h6>Powered by <a href="https://formspree.io">Formspree</a></h6>
           </form>
+            <script>
+              (function(){
+                const notes = document.getElementById('notes');
+                const counter = document.getElementById('notesCounter');
+                const hint = document.getElementById('notesHint');
+                if(!notes || !counter || !hint) return;
+                function update(){
+                  const len = notes.value.length;
+                  const max = notes.maxLength || 0;
+                  counter.textContent = len + '/' + max;
+                  hint.style.display = (max>0 && len >= max) ? 'block' : 'none';
+                }
+                notes.addEventListener('input', update);
+                update();
+              })();
+            </script>
         </div>
       </div>
+
+      <p id="showGame" class="show-btn">click!</p>
+      <div class="clickHere" id="clickHere">
+      </div>
+      <script>
+        (function(){
+          const btn = document.getElementById('showGame');
+          const container = document.getElementById('clickHere');
+          let started = false;
+
+          btn.addEventListener('click', ()=>{
+            if(!started){ startGame(); started = true; btn.textContent = 'hide'; }
+            else { if(container._stop) container._stop(); container.innerHTML=''; started=false; btn.textContent='click!'; }
+          });
+
+          function startGame(){
+            container.innerHTML = '';
+            const wrapper = document.createElement('div'); wrapper.className='game-area';
+            const ui = document.createElement('div'); ui.className='game-ui';
+            const scoreLabel = document.createElement('div'); scoreLabel.className='score'; scoreLabel.textContent='Score: 0';
+            const restart = document.createElement('button'); restart.className='small-btn'; restart.textContent='Restart';
+            const instr = document.createElement('div'); instr.textContent='Click robots to collect them.'; instr.style.flex='1'; instr.style.fontSize='0.9em';
+            ui.appendChild(scoreLabel); ui.appendChild(restart); ui.appendChild(instr);
+            const canvas = document.createElement('canvas'); canvas.width = 640; canvas.height = 200; canvas.style.width='100%'; canvas.style.display='block';
+            wrapper.appendChild(ui); wrapper.appendChild(canvas); container.appendChild(wrapper);
+
+            const ctx = canvas.getContext('2d');
+            let score = 0; let robots = []; let raf;
+
+            function rand(min,max){return Math.random()*(max-min)+min}
+            function spawn(){ robots.push({x:rand(20,canvas.width-20), y:rand(20,canvas.height-20), vx:rand(-1.2,1.2), vy:rand(-0.8,0.8), r:18, color:`hsl(${Math.floor(rand(0,360))} 60% 50%)`}); }
+            function drawRobot(r){ ctx.fillStyle=r.color; ctx.beginPath(); ctx.arc(r.x,r.y,r.r,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#222'; ctx.beginPath(); ctx.arc(r.x-6,r.y-3,3,0,Math.PI*2); ctx.fill(); ctx.beginPath(); ctx.arc(r.x+6,r.y-3,3,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#fff'; ctx.fillRect(r.x-10,r.y+8,20,4); }
+
+            function step(){ ctx.clearRect(0,0,canvas.width,canvas.height); for(let i=robots.length-1;i>=0;i--){ const r=robots[i]; r.x+=r.vx; r.y+=r.vy; if(r.x<r.r||r.x>canvas.width-r.r) r.vx*=-1; if(r.y<r.r||r.y>canvas.height-r.r) r.vy*=-1; drawRobot(r); } if(Math.random()<0.02 && robots.length<8) spawn(); raf=requestAnimationFrame(step); }
+
+            canvas.addEventListener('click', (ev)=>{ const rect=canvas.getBoundingClientRect(); const cx=(ev.clientX-rect.left)*(canvas.width/rect.width); const cy=(ev.clientY-rect.top)*(canvas.height/rect.height); for(let i=robots.length-1;i>=0;i--){ const r=robots[i]; const d=Math.hypot(r.x-cx,r.y-cy); if(d<=r.r){ robots.splice(i,1); score++; scoreLabel.textContent='Score: '+score; break; } } });
+
+            restart.addEventListener('click', ()=>{ robots=[]; score=0; scoreLabel.textContent='Score: 0'; });
+            for(let i=0;i<4;i++) spawn(); step();
+            container._stop = ()=>{ cancelAnimationFrame(raf); };
+          }
+        })();
+      </script>
     </div>
     <footer>&copy; 2026 Holmfirth High Robotics (An Achoo! Site)</footer>
   </body>
