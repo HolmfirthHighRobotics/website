@@ -1,0 +1,11 @@
+* {
+    background-color: bisque;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.content {
+    text-align: center;
+    /* Put a box around the element */
+    
+    color: cadetblue;
+}
