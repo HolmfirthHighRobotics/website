@@ -29,9 +29,6 @@ header {
 .aboutUs{
     padding: 20px;
     text-align: left;
-
-    -webkit-background-clip: text;
-    color: transparent;    
 }
 
 /* Contact form styles */
