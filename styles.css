@@ -31,6 +31,10 @@ header {
     text-align: left;
 }
 
+li {
+    text-align: left;
+}
+
 /* Contact form styles */
 .contactForm form {
     max-width: 600px;
