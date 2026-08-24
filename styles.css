@@ -170,6 +170,11 @@ header a:hover{transform: translateY(-3px); color: #eef;}
     vertical-align: top;
 }
 
+.sponsor-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.1em;
+}
+
 .sponsor-card img {
     width: 128px;
     height: 128px;
@@ -178,7 +183,7 @@ header a:hover{transform: translateY(-3px); color: #eef;}
 }
 
 .sponsor-card p {
-    max-width: 200px;      /* wrap at 200px */
+    max-width: 200px;
     margin: 0 auto;
     text-align: center;
     line-height: 1.2;
