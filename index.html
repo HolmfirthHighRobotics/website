@@ -4,18 +4,6 @@
 
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <style>
-      .show-btn{cursor:pointer;color:#0066cc;font-weight:bold;display:inline-block;margin:10px 0}
-      .game-area{border:1px solid #ccc;padding:8px;border-radius:6px;background:#f8f8f8}
-      #clickHere{min-height:220px}
-      .game-ui{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-      .score{font-weight:bold}
-      .small-btn{background:#0066cc;color:#fff;border:none;padding:6px 10px;border-radius:4px;cursor:pointer}
-      .textarea-wrap{position:relative}
-      .textarea-wrap textarea{padding-bottom:28px;box-sizing:border-box;width:100%}
-      .note-counter{position:absolute;left:8px;bottom:6px;font-size:0.85em;color:#666;pointer-events:none}
-      .note-hint{position:absolute;right:8px;bottom:6px;font-size:0.85em;color:#b03030;display:none}
-    </style>
     <script src="script.js"></script>
   </head>
   <body>
@@ -59,23 +47,19 @@
         <marquee behavior="scroll" direction="left" scrollamount="5"
                  style="border:1px solid #b6c6ff;padding:8px;border-radius:6px;background:#f8f8f8">
 
-          <!-- FIXED SPONSOR BLOCK -->
-          <div style="display:inline-block; width:128px; text-align:center; vertical-align:top;">
-
-            <h3 style="margin:0 0 6px 0; font-size:1em; line-height:1.2;">
+          <div class="sponsor-card">
+            <h3>
               <a href="https://www.reliance.co.uk" target="_blank">Reliance Precision</a>
             </h3>
 
             <img src="assets/Reliance-Precision-Blue-128x128.png"
-                 alt="Reliance Precision Logo"
-                 style="width:128px; height:128px; display:block; margin:0 auto 6px auto;">
+                 alt="Reliance Precision Logo">
 
-            <p style="margin:0; font-size:0.85em; line-height:1.2;">
+            <p>
               Reliance Precision Limited engineer innovative technologies for complex environments.
               For over sixty years, the company has offered an apprenticeship scheme to support young
               engineers starting their careers.
             </p>
-
           </div>
 
         </marquee>
