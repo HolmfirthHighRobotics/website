@@ -15,7 +15,6 @@ header {
     overflow-x: auto;
 }
 
-
 .content {
     width: 60%;
     margin: 40px auto;
@@ -76,7 +75,6 @@ li {
 .contactForm button[type="submit"]:hover {
     opacity: 0.9;
 }
-
 
 footer {
     border: 2px solid rgb(81, 134, 136);
@@ -159,4 +157,32 @@ header a:hover{transform: translateY(-3px); color: #eef;}
 @media (max-width: 800px){
     .content{width: 90%; margin: 20px auto;}
     .contactForm form{padding:10px}
+}
+
+/* ------------------------------ */
+/* SPONSOR FIX                    */
+/* ------------------------------ */
+
+.sponsor-card {
+    display: inline-block;
+    width: 128px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.sponsor-card h3,
+.sponsor-card p {
+    display: block !important;
+    max-width: 128px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.sponsor-card img {
+    width: 128px !important;
+    height: 128px !important;
+    display: block;
+    margin: 0 auto 6px auto;
 }
