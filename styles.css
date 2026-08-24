@@ -165,24 +165,23 @@ header a:hover{transform: translateY(-3px); color: #eef;}
 
 .sponsor-card {
     display: inline-block;
-    width: 128px;
+    width: 200px;          /* paragraph wrap width */
     text-align: center;
     vertical-align: top;
 }
 
-.sponsor-card h3,
-.sponsor-card p {
-    display: block !important;
-    max-width: 128px !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+.sponsor-card img {
+    width: 128px;
+    height: 128px;
+    display: block;
+    margin: 0 auto 10px auto;
 }
 
-.sponsor-card img {
-    width: 128px !important;
-    height: 128px !important;
-    display: block;
-    margin: 0 auto 6px auto;
+.sponsor-card p {
+    max-width: 200px;      /* wrap at 200px */
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
