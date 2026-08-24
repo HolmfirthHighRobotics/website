@@ -30,6 +30,7 @@
       <a href="#contactUs">Contact Us</a>
       <a href="#sponsors">Sponsors</a>
     </header>
+
     <div class="content" id="content">
       <h1>Welcome to Holmfirth High Robotics!</h1>
 
@@ -43,7 +44,7 @@
         </ol>
 
         <h2>The Team</h2>
-        <ul> <!-- Speak to the rest of the team about putting their names on here-->
+        <ul>
           <li>Ema - The Programmer & President</li>
           <li>Benjamin - Builder & Vice President</li>
           <li>Flynn - Structure & Optimisation Manager</li>
@@ -54,22 +55,29 @@
       <div class="sponsors" id="sponsors">
         <h2>Sponsors</h2>
         <p>We are always looking for sponsors to help us fund our projects, so if you are interested in sponsoring us, please get in <a href="#contactUs">touch</a>!</p>
-        <marquee behavior="scroll" direction="left" scrollamount="5" style="border:1px solid #b6c6ff;padding:8px;border-radius:6px;background:#f8f8f8">
-          <span style="display:inline-block; width:128px; text-align:center;">
-            <h2 style="display:block;">
+
+        <marquee behavior="scroll" direction="left" scrollamount="5"
+                 style="border:1px solid #b6c6ff;padding:8px;border-radius:6px;background:#f8f8f8">
+
+          <!-- FIXED SPONSOR BLOCK -->
+          <div style="display:inline-block; width:128px; text-align:center; vertical-align:top;">
+
+            <h3 style="margin:0 0 6px 0; font-size:1em; line-height:1.2;">
               <a href="https://www.reliance.co.uk" target="_blank">Reliance Precision</a>
-            </h2>
+            </h3>
 
             <img src="assets/Reliance-Precision-Blue-128x128.png"
-             alt="Reliance Precision Logo"
-             style="width:128px; height:128px;">
+                 alt="Reliance Precision Logo"
+                 style="width:128px; height:128px; display:block; margin:0 auto 6px auto;">
 
-            <p style="display:block;">
+            <p style="margin:0; font-size:0.85em; line-height:1.2;">
               Reliance Precision Limited engineer innovative technologies for complex environments.
               For over sixty years, the company has offered an apprenticeship scheme to support young
               engineers starting their careers.
             </p>
-          </span>
+
+          </div>
+
         </marquee>
       </div>
 
@@ -77,7 +85,6 @@
         <h2>Socials</h2>
         <p>Follow us on our socials to keep up to date with our progress!</p>
         <ul>
-          <!--Get Links to things-->
           <li><a href="https://youtube.com/@HolmfirthHighRobotics" target="_blank">YouTube</a></li>
           <li><a href="https://www.instagram.com/holmfirth_high_robotics/" target="_blank">Instagram</a></li>
         </ul>
@@ -86,6 +93,7 @@
       <div class="contactUs" id="contactUs">
         <h2>Contact Us</h2>
         <p>We are always open to answering your questions if you have any, so drop us an email down below!</p>
+
         <div class="contactForm" id="contactForm">
           <form id="contact" action="https://formspree.io/f/xykalpel" method="POST">
             <label for="name">Name</label>
@@ -106,34 +114,35 @@
             <div class="textarea-wrap">
               <textarea id="notes" name="notes" rows="5" maxlength="300"></textarea>
               <div id="notesCounter" class="note-counter">0/300</div>
-              <div id="notesHint" class="note-hint">Email <a href="mailto:holmfirthhighrobotics@gmail.com">holmfirthhighrobotics@gmail.com</a> for longer messages. </div>
+              <div id="notesHint" class="note-hint">Email <a href="mailto:holmfirthhighrobotics@gmail.com">holmfirthhighrobotics@gmail.com</a> for longer messages.</div>
             </div>
 
-            <!-- Optional: include a subject field for Formspree or configure via their dashboard -->
             <input type="hidden" name="_subject" value="Form Submissions">
 
             <button type="submit">Send</button>
             <h6>Powered by <a href="https://formspree.io">Formspree</a></h6>
           </form>
-            <script>
-              (function(){
-                const notes = document.getElementById('notes');
-                const counter = document.getElementById('notesCounter');
-                const hint = document.getElementById('notesHint');
-                if(!notes || !counter || !hint) return;
-                function update(){
-                  const len = notes.value.length;
-                  const max = notes.maxLength || 0;
-                  counter.textContent = len + '/' + max;
-                  hint.style.display = (max>0 && len >= max) ? 'block' : 'none';
-                }
-                notes.addEventListener('input', update);
-                update();
-              })();
-            </script>
+
+          <script>
+            (function(){
+              const notes = document.getElementById('notes');
+              const counter = document.getElementById('notesCounter');
+              const hint = document.getElementById('notesHint');
+              if(!notes || !counter || !hint) return;
+              function update(){
+                const len = notes.value.length;
+                const max = notes.maxLength || 0;
+                counter.textContent = len + '/' + max;
+                hint.style.display = (max>0 && len >= max) ? 'block' : 'none';
+              }
+              notes.addEventListener('input', update);
+              update();
+            })();
+          </script>
         </div>
       </div>
     </div>
+
     <footer>&copy; 2026 Holmfirth High Robotics (An Achoo! Site)</footer>
   </body>
 </html>
